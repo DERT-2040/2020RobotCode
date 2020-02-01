@@ -32,6 +32,7 @@ public class RobotContainer {
   private final Lift m_Lift = new Lift();
   private final Turret m_Turret = new Turret();
   private final ShooterLoader m_ShooterLoader = new ShooterLoader();
+  private final VisionCommunication m_VisionCommunication = new VisionCommunication();
 
   Joystick m_LeftJoystick = new Joystick(0);
   XboxController m_Controller = new XboxController(2);

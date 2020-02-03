@@ -27,8 +27,9 @@ public class VisionCommunication extends SubsystemBase{
         }
     }
 
-    public boolean getData(){
-        boolean recievedPacket = false;
+    public double[] getData(){
+        double[] finalArray = new double[5];
+        double recievedPacket = 0;
         String distanceString = "";
         String xString = "";
         String yString = "";
@@ -37,13 +38,13 @@ public class VisionCommunication extends SubsystemBase{
         try{
             clientSocket.receive(receivePacket);
             inputData = new String(receivePacket.getData());
-            recievedPacket = true;
+            recievedPacket = 1;
         }
         catch (Exception e){
             System.out.println("Error 2: " + e.getMessage()); 
-            recievedPacket = false;
+            recievedPacket = 0;
         }
-        if(!recievedPacket){
+        if(recievedPacket == 1){
             for(int i = 0; i < inputData.length(); i++){
                 if(inputData.charAt(i) == ','){
                     commaCount++;
@@ -67,33 +68,37 @@ public class VisionCommunication extends SubsystemBase{
             y = Double.parseDouble(yString);
             width = Double.parseDouble(widthString);
         }
+
+        if(recievedPacket == 0){
+            distance = 999;
+            x = 999;
+            y = 999;
+            width = 999;
+        }
+        
         System.out.println(distance + " " + x + " " + y + " " + width);
 
-        return recievedPacket;
+        finalArray[0] = recievedPacket;
+        finalArray[1] = distance;
+        finalArray[2] = x;
+        finalArray[3] = y;
+        finalArray[4] = width;
+        return finalArray;
     }
+
     public double getDistance(){
-        double modifiedDistance = distance;
-        if(!getData()){
-            modifiedDistance = 999;
-        }
-        return modifiedDistance;
+        return distance;
     }
 
     public double getX(){
-        double modifiedX = x;;
-        if(!getData()){
-            modifiedX = 999;
-        }
-        return modifiedX;
+        return x;
     }
 
     public double getY(){
-        double modifiedY = y;
-        if(!getData()){
-            modifiedY = 999;
-        }
-        return modifiedY;
+        return y;
     }
 
-    
+    public double getWidth(){
+        return width;
+    }
 }

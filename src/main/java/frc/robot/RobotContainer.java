@@ -61,7 +61,7 @@ public class RobotContainer {
     new JoystickButton(m_Controller, Button.kA.value).whenPressed(new intakeBalls(m_Intake)).whenReleased(new stopIntake(m_Intake));
     new JoystickButton(m_Controller, Button.kY.value).whenPressed(new moveLiftUp(m_Lift)).whenReleased(new stopLift(m_Lift));
     new JoystickButton(m_Controller, Button.kX.value).whenPressed(new moveLiftDown(m_Lift)).whenReleased(new stopLift(m_Lift));
-    new JoystickButton(m_Controller, Button.kB.value).whenPressed(new getVisionData(m_VisionCommunication));
+    new JoystickButton(m_Controller, Button.kB.value).whenPressed(new setTurretAngleAprox(m_Turret, m_VisionCommunication)).whenReleased(new stopTurret(m_Turret));
   }
 
 

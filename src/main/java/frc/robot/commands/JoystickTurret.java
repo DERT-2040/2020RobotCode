@@ -15,7 +15,7 @@ public class JoystickTurret extends CommandBase {
     }
 
     public void execute(){
-        m_Turret.turnTurretDeadband(m_rotation.getAsDouble());
+        m_Turret.turnTurretDeadband(-1 * m_rotation.getAsDouble());
     }
 
     public boolean isFinished(){

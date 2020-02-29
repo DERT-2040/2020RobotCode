@@ -12,7 +12,7 @@ public class Intake extends SubsystemBase {
   private WPI_TalonSRX m_intakeMotor = new WPI_TalonSRX(intakeMotorID);
 
   public void startIntake(){
-    m_intakeMotor.set(0.5);
+    m_intakeMotor.set(-0.5);
   }
 
   public void stopIntake(){

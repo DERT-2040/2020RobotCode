@@ -19,10 +19,10 @@ public class setTurretAngleAprox extends CommandBase {
     public void execute(){
         x = m_VisionCommunication.getAngleAprox();
         if(x > deadband && x != 999){
-            m_Turret.turnTurret(.1);
+            m_Turret.turnTurret(-.1);
         }
         else if(x < -deadband){
-            m_Turret.turnTurret(-.1);
+            m_Turret.turnTurret(.1);
         }
         else if(x <= deadband && x >= -deadband && x != 999){
             m_Turret.turnTurret(0);

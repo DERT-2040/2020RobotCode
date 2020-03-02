@@ -19,6 +19,6 @@ public class JoystickDrive extends CommandBase {
     }
 
     public void execute(){
-        m_Drivetrain.driveDeadband(m_rotation.getAsDouble(), m_forward.getAsDouble(), m_zAxis.getAsDouble());
+        m_Drivetrain.driveDeadband(-1 * m_rotation.getAsDouble(), m_forward.getAsDouble(), m_zAxis.getAsDouble());
     }
 }

@@ -12,7 +12,7 @@ public class ShooterLoader extends SubsystemBase {
   private WPI_TalonSRX m_intakeMotor = new WPI_TalonSRX(intakeMotorID);
 
   public void startLoader(){
-    m_intakeMotor.set(-1);
+    m_intakeMotor.set(-.75);
   }
 
   public void stopLoader(){

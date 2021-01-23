@@ -11,14 +11,14 @@ public class Drivetrain extends SubsystemBase {
   /**
    * Creates a new Drivetrain.
    */
-  private static final int frontLeftDeviceID = 3;
-  private static final int rearLeftDeviceID = 4;
+  private static final int frontLeftDeviceID = 0;
+  private static final int rearLeftDeviceID = 1;
   private CANSparkMax m_frontLeftMotor = new CANSparkMax(frontLeftDeviceID, MotorType.kBrushless);
   private CANSparkMax m_rearLeftMotor = new CANSparkMax(rearLeftDeviceID, MotorType.kBrushless);
   SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(m_frontLeftMotor, m_rearLeftMotor);
 
-  private static final int frontRightDeviceID = 1;
-  private static final int rearRightDeviceID = 2;
+  private static final int frontRightDeviceID = 2;
+  private static final int rearRightDeviceID = 3;
   private CANSparkMax m_frontRightMotor = new CANSparkMax(frontRightDeviceID, MotorType.kBrushless);
   private CANSparkMax m_rearRightMotor = new CANSparkMax(rearRightDeviceID, MotorType.kBrushless);
   SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(m_frontRightMotor, m_rearRightMotor);
@@ -41,7 +41,7 @@ public class Drivetrain extends SubsystemBase {
     m_rearRightMotor.restoreFactoryDefaults();
 
     m_robotDrive = new DifferentialDrive(m_leftMotors, m_rightMotors);  
-    m_robotDrive.setRightSideInverted(false);
+    m_robotDrive.setRightSideInverted(true);
   }
 
   public void driveDeadband(double getXAxis, double getYAxis, double getZAxis) {

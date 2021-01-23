@@ -8,7 +8,7 @@ public class Shooter extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  private static final int shooterMotorID = 5;
+  private static final int shooterMotorID = 4;
   private CANSparkMax m_shooterMotor = new CANSparkMax(shooterMotorID, MotorType.kBrushless);
 
   public void startMotor(){

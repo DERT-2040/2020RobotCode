@@ -16,8 +16,8 @@ public class Lift extends SubsystemBase {
   private static final double deadband = 0.1;
   private static final double movingSpeed = 0.5;
 
-  private static final int rightLiftMotorID = 8;
-  private static final int leftLiftMotorID = 9;
+  private static final int rightLiftMotorID = 6;
+  private static final int leftLiftMotorID = 7;
   private WPI_TalonSRX m_rightLiftMotor = new WPI_TalonSRX(rightLiftMotorID);
   private WPI_TalonSRX m_leftLiftMotor = new WPI_TalonSRX(leftLiftMotorID);
   SpeedControllerGroup m_LiftMotors = new SpeedControllerGroup(m_rightLiftMotor, m_leftLiftMotor);

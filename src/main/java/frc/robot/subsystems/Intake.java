@@ -8,7 +8,7 @@ public class Intake extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
 
-  private static final int intakeMotorID = 5;
+  private static final int intakeMotorID = 8;
   private WPI_TalonSRX m_intakeMotor = new WPI_TalonSRX(intakeMotorID);
 
   public void startIntake(){

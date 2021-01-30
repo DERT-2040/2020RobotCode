@@ -8,7 +8,7 @@ public class Turret extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
 
-  private static final int turretMotorID = 12;
+  private static final int turretMotorID = 5;
   private WPI_TalonSRX m_turretMotor = new WPI_TalonSRX(turretMotorID);
 
   public void turnTurretDeadband(double turnSpeed){

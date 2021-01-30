@@ -11,7 +11,7 @@ public class Drivetrain extends SubsystemBase {
   /**
    * Creates a new Drivetrain.
    */
-  private static final int frontLeftDeviceID = 0;
+  private static final int frontLeftDeviceID = 20;
   private static final int rearLeftDeviceID = 1;
   private CANSparkMax m_frontLeftMotor = new CANSparkMax(frontLeftDeviceID, MotorType.kBrushless);
   private CANSparkMax m_rearLeftMotor = new CANSparkMax(rearLeftDeviceID, MotorType.kBrushless);

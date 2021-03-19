@@ -35,6 +35,7 @@ public class RobotContainer {
   private final VisionCommunication m_VisionCommunication = new VisionCommunication();
 
   Joystick m_LeftJoystick = new Joystick(0);
+  Joystick m_RightJoystick = new Joystick(1);
   XboxController m_Controller = new XboxController(2);
 
   /**
@@ -44,8 +45,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     
-    m_Lift.setDefaultCommand(new JoystickLift(m_Lift, () -> m_Controller.getY(GenericHID.Hand.kLeft)));
-    m_Drivetrain.setDefaultCommand(new JoystickDrive(m_Drivetrain, () -> m_LeftJoystick.getY(), () -> m_LeftJoystick.getX(), () ->  m_LeftJoystick.getZ()));
+    m_Lift.setDefaultCommand(new JoystickLift(m_Lift, () -> m_Controller.getY(GenericHID.Hand.kRight)));
+    m_Drivetrain.setDefaultCommand(new JoystickDrive(m_Drivetrain, () -> m_RightJoystick.getY(), () -> m_LeftJoystick.getX(), () ->  m_LeftJoystick.getZ()));
     m_Turret.setDefaultCommand(new JoystickTurret(m_Turret, () -> m_Controller.getX(GenericHID.Hand.kLeft)));
   }
 
@@ -58,10 +59,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     new JoystickButton(m_Controller, Button.kBumperLeft.value).whenPressed(new Shoot(m_Shooter)).whenReleased(new stopShoot(m_Shooter));
     new JoystickButton(m_Controller, Button.kBumperRight.value).whenPressed(new loadBalls(m_ShooterLoader)).whenPressed(new intakeBalls(m_Intake)).whenReleased(new stopLoader(m_ShooterLoader)).whenReleased(new stopIntake(m_Intake));
-    new JoystickButton(m_Controller, Button.kA.value).whenPressed(new intakeBalls(m_Intake)).whenReleased(new stopIntake(m_Intake));
-    new JoystickButton(m_Controller, Button.kY.value).whenPressed(new moveLiftUp(m_Lift)).whenReleased(new stopLift(m_Lift));
-    new JoystickButton(m_Controller, Button.kX.value).whenPressed(new moveLiftDown(m_Lift)).whenReleased(new stopLift(m_Lift));
+    //Uncomment this new JoystickButton(m_Controller, Button.kA.value).whenPressed(new intakeBalls(m_Intake)).whenReleased(new stopIntake(m_Intake));
+    //new JoystickButton(m_Controller, Button.kY.value).whenPressed(new moveLiftUp(m_Lift)).whenReleased(new stopLift(m_Lift));
+    //new JoystickButton(m_Controller, Button.kX.value).whenPressed(new moveLiftDown(m_Lift)).whenReleased(new stopLift(m_Lift));
     new JoystickButton(m_Controller, Button.kB.value).whenPressed(new setTurretAngleAprox(m_Turret, m_VisionCommunication)).whenReleased(new stopTurret(m_Turret));
+    new JoystickButton(m_Controller, Button.kX.value).whenPressed(new reverseIntake(m_Intake)).whenReleased(new stopIntake(m_Intake));
   }
 
 
@@ -73,6 +75,7 @@ public class RobotContainer {
 
   //Add an autonomous command still
   public Command getAutonomousCommand() {
-    return null;
+    return new autoCommandGroup(m_Drivetrain, m_Shooter, m_ShooterLoader, m_Intake, m_Turret, m_VisionCommunication);
+    //return null;
   }
 }

@@ -24,7 +24,7 @@ public class VisionCommunication extends SubsystemBase{
             
         }
         catch (Exception e){
-            System.out.println("Error: " + e.getMessage());
+            //System.out.println("Error: " + e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class VisionCommunication extends SubsystemBase{
             
         }
         catch (Exception e){
-            System.out.println("Error 2: " + e.getMessage()); 
+            //System.out.println("Error 2: " + e.getMessage()); 
             recievedPacket = 0;
         }
 
@@ -92,7 +92,7 @@ public class VisionCommunication extends SubsystemBase{
         }
         
         //Simple measurement output
-        System.out.println(distance + " " + x + " " + y + " " + width);
+        //System.out.println(distance + " " + x + " " + y + " " + width);
 
         finalArray[0] = recievedPacket;
         finalArray[1] = distance;
@@ -107,7 +107,7 @@ public class VisionCommunication extends SubsystemBase{
         double x = getArrayData()[2];
         if(x != 999){
             finalAngle = -26+(0.0848 * x) + (-0.0000015 * x * x);
-            System.out.println(finalAngle);
+            //System.out.println(finalAngle);
             return finalAngle;
         }
         else{

@@ -8,14 +8,14 @@ public class ShooterLoader extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
 
-  private static final int intakeMotorID = 12;
+  private static final int intakeMotorID = 13;
   private WPI_TalonSRX m_intakeMotor = new WPI_TalonSRX(intakeMotorID);
 
   public void startLoader(){
-    m_intakeMotor.set(-.75);
+    m_intakeMotor.set(1);
   }
 
   public void stopLoader(){
     m_intakeMotor.set(0);
   }
-}
+}   

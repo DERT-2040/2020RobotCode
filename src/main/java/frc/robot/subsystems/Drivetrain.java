@@ -27,6 +27,7 @@ public class Drivetrain extends SubsystemBase {
 
 
   private DifferentialDrive m_robotDrive;
+
   
   private double adjustedLeftAxisX;
   private double adjustedLeftAxisY;
@@ -41,7 +42,7 @@ public class Drivetrain extends SubsystemBase {
     m_rearRightMotor.restoreFactoryDefaults();
 
     m_robotDrive = new DifferentialDrive(m_leftMotors, m_rightMotors);  
-    m_robotDrive.setRightSideInverted(true);
+    m_robotDrive.setRightSideInverted(false);
   }
 
   public void driveDeadband(double getXAxis, double getYAxis, double getZAxis) {
@@ -72,5 +73,14 @@ public class Drivetrain extends SubsystemBase {
   public double getRotations(){
     double rotations = 0;
     return rotations;
+  }
+
+  public void simpleDrive(double speed){
+    m_robotDrive.arcadeDrive(speed, 0);
+  }
+
+  public void stop(){
+    m_leftMotors.set(0);
+    m_rightMotors.set(0);
   }
 }

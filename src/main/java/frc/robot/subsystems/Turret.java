@@ -15,7 +15,7 @@ public class Turret extends SubsystemBase {
     if(turnSpeed <= 0.1 && turnSpeed >= -0.1){
       turnSpeed = 0;
     }
-    m_turretMotor.set(turnSpeed);
+    m_turretMotor.set(-turnSpeed*0.2);
   }
 
   public void turnTurret(double turnSpeed){
